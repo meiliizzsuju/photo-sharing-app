@@ -1,5 +1,6 @@
 import React from 'react';
-import GoogleLogin from 'react-google-login';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import {GoogleLogin} from '@react-oauth/google';
 import {userNavigate} from 'react-router-dom';
 import {FcGoogle} from 'react-icons/fc' // Google Logo
 import shareVdo from '../assets/share.mp4'
@@ -30,8 +31,8 @@ const Login = () => {
             />
           </div>
           <div className='shadow-2xl'>
+          <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}>
             <GoogleLogin 
-              clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
               render={(renderProps)=>(
                 <button
                   type='button'
@@ -47,6 +48,7 @@ const Login = () => {
               onFailure={responseGoogle}
               cookiePolicy="single_host_origin"
             />
+          </GoogleOAuthProvider>;
           </div>
         </div>
       </div>
