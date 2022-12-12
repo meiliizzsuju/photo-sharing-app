@@ -1,3 +1,14 @@
+# Full-Stack Social media photo app
+
+Key features
+
+- backend: Sanity
+  - Google OAuth2
+- frontend: React
+  - Tailwind
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
