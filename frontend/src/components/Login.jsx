@@ -13,7 +13,8 @@ const Login = () => {
 
   const responseGoogle = (response) =>{
     const userObject = jwt_decode(response.credential);
-    localStorage.setItem('user',userObject);
+
+    localStorage.setItem('user',JSON.stringify(userObject));
 
     const { name, sub, picture} = userObject;
 
@@ -23,8 +24,6 @@ const Login = () => {
       userName: name,
       image: picture
     }
-
-    console.log(doc)
 
     // POST to sanity
     client.createIfNotExists(doc).then(()=>{
