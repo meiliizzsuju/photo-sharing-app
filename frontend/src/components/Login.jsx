@@ -1,14 +1,35 @@
 import React from 'react';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import {GoogleLogin} from '@react-oauth/google';
-import {userNavigate} from 'react-router-dom';
+import {GoogleLogin,GoogleOAuthProvider} from '@react-oauth/google';
+import {useNavigate} from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+
 import {FcGoogle} from 'react-icons/fc' // Google Logo
 import shareVdo from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
+import { client } from '../clients';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const responseGoogle = (response) =>{
-    console.log(response)
+    const userObject = jwt_decode(response.credential);
+    localStorage.setItem('user',userObject);
+
+    const { name, sub, picture} = userObject;
+
+    const doc = {
+      _id: sub,
+      _type: 'user',
+      userName: name,
+      image: picture
+    }
+
+    console.log(doc)
+
+    // POST to sanity
+    client.createIfNotExists(doc).then(()=>{
+      navigate('/',{replace:true});
+    });
   }
   
   return (
