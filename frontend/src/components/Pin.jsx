@@ -6,6 +6,7 @@ import { AiTwoToneDelete } from 'react-icons/ai';
 import { BsFillArrowUpRightCircleFull } from 'react-icons/bs';
 
 import { client, urlFor } from '../clients';
+import { fetchUser } from '../utils/fetchUser';
 
 const Pin = ({pin : {postedBy, image, _id, destination}}) => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Pin = ({pin : {postedBy, image, _id, destination}}) => {
 
   const imgOptTag = urlFor(image).width(250).url();
   
-
+  const userInfo = fetchUser();
 
   return (
     <div className='m-2 '>

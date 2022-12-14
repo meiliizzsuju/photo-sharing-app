@@ -9,6 +9,7 @@ import { client } from '../clients';
 import Pins from './Pins';
 
 import logo from '../assets/logo.png'
+import { fetchUser } from '../utils/fetchUser';
 
 const Home = () => {
   const [toggleSidebar, settoggleSidebar] = useState(false);
@@ -16,7 +17,7 @@ const Home = () => {
   const scrollRef = useRef(null);
 
   // localStorage.getItem('user') comes in string, need to convert to json
-  const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear;
+  const userInfo = fetchUser();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
