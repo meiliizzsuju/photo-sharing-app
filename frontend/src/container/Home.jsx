@@ -45,7 +45,7 @@ const Home = () => {
           </Link>
           {/* get User from localstorage */}
           <Link to={`user-profile/${user?._id}`} className="justify-self-end"> 
-            <img src={user?.image} referrerpolicy="no-referrer" alt="userImage" className='w-12' />
+            <img src={user?.image} referrerPolicy="no-referrer" alt="userImage" className='w-12' />
           </Link>
         </div>
         {toggleSidebar && (
