@@ -31,8 +31,6 @@ const Feed = () => {
     }
    }, [categoryId]);
 
-   console.log(pins)
-
   if(loading) return <Spinner message="We are loding new ideas to your feed..."/>
 
   return (
