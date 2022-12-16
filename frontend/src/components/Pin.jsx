@@ -27,11 +27,7 @@ const Pin = ({pin : {posted, image, _id, destination, save}}) => {
   // // [ ].length -> 0 -> !0 > true -> !true = false
 
   // ?.length = > Optional chaining : If the object is undefined or null, it returns undefined instead of throwing an error.
-
-  console.log("posted?.id",posted?._id)
-  console.log("user.sub",user.sub)
-  console.log("posted?.id === user.sub",posted?._id === user.sub)
-
+  
   // save pin
   const savePin = (id) => {
     console.log("inside save pin",id)
