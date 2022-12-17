@@ -81,7 +81,6 @@ const CreatePin = ({ user }) => {
   }
 
 
-  console.log("user",user)
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
       { fields && (
@@ -95,7 +94,7 @@ const CreatePin = ({ user }) => {
             )}
             { wrongImageType && (<p> Wong image type</p>)}
             { !imageAsset ? (
-              <label>
+              <label className='cursor-pointer'>
                 <div className='flex flex-col items-center justify-center h-full'>
                   <div className='flex flex-col justify-center items-center'>
                     <p className='font-bold text-2xl'>
@@ -133,7 +132,7 @@ const CreatePin = ({ user }) => {
           </div>
         </div>
 
-        <div className='className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full"'>
+        <div className='className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full my-8'>
           <input  
             type="text"
             value={title}
@@ -156,24 +155,24 @@ const CreatePin = ({ user }) => {
             value={about}
             onChange={(e) => setAbout(e.target.value)}
             placeholder="What is your pin about?"
-            className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full"
+            className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full my-4"
           />
           <input  
             type="text"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a destination link"
-            className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full"
+            className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full my-4"
           />
 
           <div className='flex flex-col'>
             <div>
-              <p className="mb-2 font-semibold text:lg sm:text-xl">Choose Pin Category</p>
+              <p className="mb-2 font-semibold text:lg sm:text-xl my-4">Choose Pin Category</p>
               <select
                 onChange={(e) => {
                   setCategory(e.target.value);
                 }}
-                className="outline-none w-4/5 text-base border-2 border-gray-200 p-2 rounded-md cursor-pointer capitalize"
+                className="outline-none w-4/5 text-base border-2 border-gray-200 p-2 rounded-md cursor-pointer capitalize mb-4"
               >
                 <option value="others" className="sm:text-bg bg-white">Select Category</option>
                 {categories.map((item) => (
