@@ -113,7 +113,7 @@ const Pin = ({pin : {posted, image, _id, destination, save}}) => {
 
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {destination.split('//')[1].split('/')[0]}
+                  {destination.indexOf('//') > 0 ? destination.split('//')[1].split('/')[0] : destination}
                 </a>
               )}
               {posted?._id === user.sub && (
