@@ -106,3 +106,71 @@ export const categories = [
     image: 'https://i.pinimg.com/236x/2e/63/c8/2e63c82dfd49aca8dccf9de3f57e8588.jpg',
   },
 ];
+
+
+
+export const pinDetailQuery = (pinId) => {
+  const query = `*[_type == "pin" && _id == '${pinId}']{
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    title, 
+    about,
+    category,
+    destination,
+    posted->{
+      _id,
+      userName,
+      image
+    },
+   save[]{
+      posted->{
+        _id,
+        userName,
+        image
+      },
+    },
+    comments[]{
+      comment,
+      _key,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    }
+  }`;
+  return query;
+};
+
+
+
+
+export const pinDetailMorePinQuery = (pin) => {
+  const query = `*[_type == "pin" && category == '${pin.category}' && _id != '${pin._id}' ]{
+    image{
+      asset->{
+        url
+      }
+    },
+    _id,
+    destination,
+    posted->{
+      _id,
+      userName,
+      image
+    },
+    save[]{
+      _key,
+      posted->{
+        _id,
+        userName,
+        image
+      },
+    },
+  }`;
+  return query;
+};
