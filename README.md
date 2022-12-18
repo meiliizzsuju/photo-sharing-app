@@ -4,6 +4,7 @@ Key features
 
 - backend: Sanity
   - Google OAuth2
+  - GROQ
 - frontend: React
   - Tailwind
 
