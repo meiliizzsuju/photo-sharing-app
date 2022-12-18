@@ -64,9 +64,6 @@ const PinDetails = ({ user }) => {
 
   // useEffect must be called before if statement if there was one
 
-  console.log("pinDetail")
-  console.log(pinDetail)
-  console.log("pins",pins)
   if (!pinDetail) return <Spinner message="Loading pin detail" />
 
 

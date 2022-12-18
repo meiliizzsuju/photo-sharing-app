@@ -40,13 +40,10 @@ const UserProfile = () => {
           setPins(data);
         });
     } else {
-      console.log("chek")
       const savedPinsQuery = userSavedPinsQuery(userId);
 
       client.fetch(savedPinsQuery)
         .then((data) => {
-          console.log("saved data")
-          console.log(data)
           setPins(data);
         });
     }
@@ -59,10 +56,6 @@ const UserProfile = () => {
     navigate('/login');
   };
 
-  console.log("pins =>")
-  console.log(pins)
-
-  console.log('userId ;',userId)
 
   if (!user) return <Spinner message='Loading profile'/>;
 

@@ -30,11 +30,11 @@ const Pin = ({pin : {posted, image, _id, destination, save}}) => {
   
   // save pin
   const savePin = (id) => {
-    console.log("inside save pin",id)
-    if (!alreadySaved) {
-      setSavingPost(true);
-      console.log("alreadySaved?.length === 0")
 
+    if (!alreadySaved) {
+
+      setSavingPost(true);
+      
       client
         .patch(id)
         .setIfMissing({ save: [] })
