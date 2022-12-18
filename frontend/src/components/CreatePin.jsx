@@ -146,6 +146,7 @@ const CreatePin = ({ user }) => {
                 src={user.image}
                 className="w-10 h-10 rounded-full"
                 alt="user-profile"
+                referrerPolicy="no-referrer"
               />
               <p className="font-bold">{user.userName}</p>
             </div>
