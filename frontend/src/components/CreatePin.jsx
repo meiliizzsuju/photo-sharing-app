@@ -7,6 +7,9 @@ import { categories } from '../utils/data';
 import { client } from '../clients'
 import Spinner from './Spinner';
 
+const inputNormalState = `outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full my-4 transition duration-150 ease-in-out`;
+const inputErrorState = inputNormalState +` error-field`;
+
 const CreatePin = ({ user }) => {
   // state for create from
   const [title, setTitle] = useState('');
@@ -45,7 +48,7 @@ const CreatePin = ({ user }) => {
 
   const savePin = () =>{
     // check all the fields from the form
-    if (title && about && destination && imageAsset?._id && category) {
+    if (title && about && imageAsset?._id && category) {
       const doc = {
         _type: 'pin',
         title,
@@ -75,7 +78,7 @@ const CreatePin = ({ user }) => {
         () => {
           setFields(false); // clear after 2 sec
         },
-        10000,
+        5000,
       );
     }
   }
@@ -84,7 +87,7 @@ const CreatePin = ({ user }) => {
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
       { fields && (
-        <p className="text-red-500 mb-5 text-xl transition-all duration-150 ease-in ">Please add all fields.</p>
+        <p className="text-rose-500 mb-5 text-xl transition-all duration-150 ease-in ">Please add all required fields.</p>
       )}
       <div className='flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full'>
         <div className='bg-secondaryColor p-3 flex flex-0.7 w-full'>
@@ -133,13 +136,19 @@ const CreatePin = ({ user }) => {
         </div>
 
         <div className='className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full my-8'>
-          <input  
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Add your title"
-            className="outline-none text-2xl sm:text-3xl font-bold border-b-2 border-gray-200 p-2 w-full"
-          />
+          <div className='form-control relative'>
+            <input  
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Add your title"
+              className={(fields && title === '') ? (inputErrorState) : (inputNormalState)}
+              required
+            />
+            {(fields && title === '') &&(
+              <span className='error-message text-xs text-rose-600 absolute -bottom-1 left-0 pt-0.5'>Please provide title</span>
+            )}
+          </div>
           {user && (
             <div className="flex gap-2 mt-2 mb-2 items-center bg-white rounded-lg ">
               <img
@@ -147,22 +156,28 @@ const CreatePin = ({ user }) => {
                 className="w-10 h-10 rounded-full"
                 alt="user-profile"
                 referrerPolicy="no-referrer"
+                required
               />
               <p className="font-bold">{user.userName}</p>
             </div>
           )}
-          <input  
-            type="text"
-            value={about}
-            onChange={(e) => setAbout(e.target.value)}
-            placeholder="What is your pin about?"
-            className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full my-4"
-          />
+          <div className='form-control relative'>
+            <input  
+              type="text"
+              value={about}
+              onChange={(e) => setAbout(e.target.value)}
+              placeholder="What is your pin about?"
+              className={(fields && about === '') ? (inputErrorState) : (inputNormalState)}
+            />
+            {(fields && about === '') &&(
+              <span className='error-message text-xs text-rose-600 absolute -bottom-1 left-0 pt-0.5'>Please add about detail</span>
+            )}
+          </div>
           <input  
             type="text"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            placeholder="Add a destination link"
+            placeholder="Add url (optional)"
             className="outline-none text-base sm:text-lg border-b-2 border-gray-200 p-2 w-full my-4"
           />
 

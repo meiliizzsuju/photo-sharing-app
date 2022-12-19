@@ -9,3 +9,8 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+
+.error-field{
+  border-color: rgba(225,29,72 ,0.5);
+}
