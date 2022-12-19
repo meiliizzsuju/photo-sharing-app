@@ -8,6 +8,7 @@ Key features
 - frontend: React
   - Tailwind
 
+Demo preview : https://peaceful-starship-46fe97.netlify.app/
 
 
 # Getting Started with Create React App
