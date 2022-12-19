@@ -50,7 +50,7 @@ const Home = () => {
           </Link>
         </div>
         {toggleSidebar && (
-          <div className='fixed w-4/5 bg-white h-screen overflow-y shadow-md z-index-10 animate-slide-in'>
+          <div className='fixed w-4/5 bg-white h-screen overflow-y shadow-md z-10 animate-slide-in'>
             <div className='absolute w-full flex justified-end items-center p-2'>
               <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={()=> settoggleSidebar(false)}/>
             </div>
